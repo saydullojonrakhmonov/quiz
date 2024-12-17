@@ -22,18 +22,38 @@ body {
 
 .settings-btn {
   font-size: 18px;
-  padding: 5px 10px;
+  position: relative;
   border: none;
   border-radius: 7px;
   cursor: pointer;
+  padding: 5px 10px;
+}
+
+.btn .tooltip {
+    display: none;
+    position: absolute;
+    top: 40px; /* Adjust to position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.btn:hover .tooltip {
+    display: block;
 }
 
 .modal {
   display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  gap: 20px;
   width: 400px;
   background: radial-gradient(
     circle,
@@ -57,13 +77,17 @@ body {
 
 .modal select {
   border-radius: 7px;
-  font-size: 18px;
-  padding: 3px;
+  font-size: 16px;
+  padding: 2px;
   width: 100px;
 }
 
+.select-question{
+    margin-top: 10px;
+}
+
 .hide{
-    display: none;
+    display: block;
 }
 
 .start-btn,
