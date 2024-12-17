@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background: #5372f0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.start-btn,
+.info-.start-btnbox,
+.quiz-.start-btnbox,
+.result-.start-btnbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.start-btn button {
+    font-size: 25px;
+    font-weight: 500;
+    color: #5372F0;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+  }
