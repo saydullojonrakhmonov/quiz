@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz app</title>
-    <link rel="shortcut icon" href="https://png.pngtree.com/png-clipart/20231203/original/pngtree-quiz-blue-glossy-web-icon-game-photo-png-image_13759459.png" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="shortcut icon"
+      href="https://play-lh.googleusercontent.com/vG22OEaUJqEsxqwhTrErGwHatS4ItqnyZtJ9_k7j_h8n4ZaSOSQQDK9zfoL8b6CrFg"
+      type="image/x-icon"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="start-btn"><button>Start Quiz</button></div>
+    <div class="info-box">
+      <div class="info-title"><span>Rules of quiz</span></div>
+      <div class="info-list">
+        <div class="info">
+          1. You will have only <span>15 seconds</span> per each question.
+        </div>
+        <div class="info">
+          2. Once you select your answer, it can't be undone.
+        </div>
+        <div class="info">
+          3. You can't select any option once time goes off.
+        </div>
+        <div class="info">
+          4. You can't exit from the Quiz while you're playing.
+        </div>
+        <div class="info">
+          5. You'll get points on the basis of your correct answers.
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <header>
+        <h3>Awesome Quiz Application</h3>
+        <div class="timer">
+          <h4>Time left</h4>
+          <h4>Time</h4>
+        </div>
+      </header>
+      <main class="main-section">
+        <div>1</div>
+        <div>What does HTML stand for?</div>
+      </main>
+    </div>
+  </body>
 </html>
