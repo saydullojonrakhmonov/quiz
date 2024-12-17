@@ -1,16 +1,63 @@
 /* importing google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   overflow-x: hidden;
-  background: #5372F0;
+  background: #5372f0;
+}
+
+.settings {
+  display: flex;
+  justify-content: end;
+  margin: 5px;
+  padding: 10px;
+}
+
+.settings-btn {
+  font-size: 18px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+  width: 400px;
+  background: radial-gradient(
+    circle,
+    #5284b8,
+    #0094bb,
+    #009f9c,
+    #00a361,
+    #739f10
+  );
+  color: white;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px black;
+  top: 0;
+  left: 0;
+  margin: auto;
+  margin-top: 100px;
+  padding: 30px;
+}
+
+.modal select {
+  border-radius: 7px;
+  font-size: 18px;
 }
 
 .start-btn,
@@ -21,8 +68,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .info-box.activeInfo,
@@ -37,7 +83,7 @@ body {
 .start-btn button {
   font-size: 25px;
   font-weight: 500;
-  color: #5372F0;
+  color: #5372f0;
   padding: 15px 30px;
   outline: none;
   border: none;
@@ -80,7 +126,7 @@ body {
 
 .info-box .info-list .info span {
   font-weight: 600;
-  color: #5372F0;
+  color: #5372f0;
 }
 
 .info-box .buttons {
@@ -102,7 +148,7 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  border: 1px solid #5372F0;
+  border: 1px solid #5372f0;
   transition: all 0.3s ease;
 }
 
@@ -173,7 +219,7 @@ body {
   bottom: 0px;
   left: 0px;
   height: 3px;
-  background: #5372F0;
+  background: #5372f0;
 }
 
 section {
@@ -288,8 +334,8 @@ footer button {
   outline: none;
   color: #fff;
   border-radius: 5px;
-  background: #5372F0;
-  border: 1px solid #5372F0;
+  background: #5372f0;
+  border: 1px solid #5372f0;
   line-height: 10px;
   opacity: 0;
   pointer-events: none;
@@ -325,7 +371,7 @@ footer button.show {
 
 .result-box .icon {
   font-size: 100px;
-  color: #5372F0;
+  color: #5372f0;
   margin-bottom: 10px;
 }
 
@@ -361,13 +407,13 @@ footer button.show {
   border: none;
   outline: none;
   border-radius: 5px;
-  border: 1px solid #5372F0;
+  border: 1px solid #5372f0;
   transition: all 0.3s ease;
 }
 
 .buttons button.restart {
   color: #fff;
-  background: #5372F0;
+  background: #5372f0;
 }
 
 .buttons button.restart:hover {
@@ -375,13 +421,13 @@ footer button.show {
 }
 
 .buttons button.quit {
-  color: #5372F0;
+  color: #5372f0;
   background: #fff;
 }
 
 .buttons button.quit:hover {
   color: #fff;
-  background: #5372F0;
+  background: #5372f0;
 }
 
 /* Responsive media query code for small devices */
