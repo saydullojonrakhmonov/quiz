@@ -44,7 +44,7 @@ body {
     #739f10
   );
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0px 5px 5px black;
@@ -58,6 +58,12 @@ body {
 .modal select {
   border-radius: 7px;
   font-size: 18px;
+  padding: 3px;
+  width: 100px;
+}
+
+.hide{
+    display: none;
 }
 
 .start-btn,
