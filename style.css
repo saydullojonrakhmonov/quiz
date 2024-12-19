@@ -90,6 +90,20 @@ body {
     display: block;
 }
 
+.btn-apply{
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.apply-btn{
+padding: 5px;
+border: none;
+border-radius: 7px;
+cursor: pointer;
+ 
+}
+
 .start-btn,
 .info-box,
 .quiz-box,
