@@ -37,9 +37,11 @@
   <body>
     <!-- Start Quiz Button -->
     <div class="settings">
-      <button class="settings-btn btn" >Settings  <span class="tooltip">Open settings</span></button>
+      <button class="settings-btn btn btn-outline-dark">
+        Settings<span class="tooltip">Open settings</span>
+      </button>
     </div>
-    <div class="modal" id="modal">
+    <div class="modal-section" id="modal">
       <div>
         <div>Select difficulty level</div>
         <select name="" id="quiz-types">
@@ -59,13 +61,24 @@
           <option value="20">20</option>
         </select>
       </div>
+      <div>
+        <div class="select-question">Select category</div>
+        <select name="" id="quiz-category">
+          <option value="">Select</option>
+          <option value="10">Books</option>
+          <option value="11">Film</option>
+          <option value="15">Video Games</option>
+          <option value="21">Sports</option>
+          <option value="22">Geography</option>
+          <option value="26">Celebrities</option>
+        </select>
+      </div>
       <div class="btn-apply">
         <button class="apply-btn btn">Apply</button>
       </div>
     </div>
     <div class="start-btn"><button>Start Quiz</button></div>
 
-    <!-- Info Box (displayed when the quiz starts) -->
     <div class="info-box">
       <div class="info-title"><span>Some Rules of this Quiz</span></div>
       <div class="info-list">
@@ -91,7 +104,6 @@
       </div>
     </div>
 
-    <!-- Quiz Box (main container for the quiz) -->
     <div class="quiz-box">
       <header>
         <div class="title">Quiz Application</div>
@@ -102,32 +114,22 @@
         <div class="time-line"></div>
       </header>
       <section>
-        <div class="que-text">
-          <!-- Question text will be inserted here by JavaScript -->
-        </div>
-        <div class="option-list">
-          <!-- Options will be inserted here by JavaScript -->
-        </div>
+        <div class="que-text"></div>
+        <div class="option-list"></div>
       </section>
 
-      <!-- Footer of Quiz Box -->
       <footer>
-        <div class="total-question">
-          <!-- Question count number will be inserted here by JavaScript -->
-        </div>
+        <div class="total-question"></div>
         <button class="next-btn">Next</button>
       </footer>
     </div>
 
-    <!-- Result Box (displayed after completing the quiz) -->
     <div class="result-box">
       <div class="icon">
         <i class="fas fa-crown"></i>
       </div>
       <div class="complete-text">You've completed the Quiz!</div>
-      <div class="score-text">
-        <!-- Score result will be inserted here by JavaScript -->
-      </div>
+      <div class="score-text"></div>
       <div class="buttons">
         <button class="restart">Replay Quiz</button>
         <button class="quit">Quit Quiz</button>
