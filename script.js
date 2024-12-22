@@ -62,3 +62,46 @@ applyBtn.addEventListener("click", () => {
       .catch((err) => console.log(`Error ${err}`));
   }, 100);
 });
+
+
+let timeValue = 20;
+let questionCount = 0;
+let questionNumber = 1;
+let userScore = 0;
+let counter;
+let counterLine;
+let widthValue = 0;
+
+startBtn.addEventListener('click', () =>{
+  if (questions.length() == 0 ) {
+    alert("Please select questions difficulty level, amount and category from settings!")
+    return
+  }
+  quizBox.classList.add('active-info')
+})
+
+
+exitBtn.onclick = () => {
+  infoBox.classList.remove("activeInfo");
+};
+
+continueBtn.onclick = () => {
+  infoBox.classList.remove("activeInfo");
+  quizBox.classList.add("activeQuiz");
+  startQuiz();
+};
+
+restartQuizBtn.onclick = () => {
+  resultBox.classList.remove("activeResult");
+  quizBox.classList.add("activeQuiz");
+  resetQuiz();
+  startQuiz();
+};
+
+quitQuizBtn.onclick = () => {
+  window.location.reload();
+};
+
+nextBtn.onclick = () => {
+  nextQuestion();
+};

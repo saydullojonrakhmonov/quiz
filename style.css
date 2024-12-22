@@ -116,7 +116,7 @@ cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.info-box.activeInfo,
+.info-box.active-info,
 .quiz-box.activeQuiz,
 .result-box.activeResult {
   opacity: 1;
@@ -475,7 +475,7 @@ footer button.show {
   background: #5372f0;
 }
 
-/* Responsive media query code for small devices */
+/* responsive section  */
 @media (max-width: 768px) {
   section {
     padding: 25px 15px 20px 15px;
