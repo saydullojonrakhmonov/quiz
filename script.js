@@ -105,3 +105,36 @@ quitQuizBtn.onclick = () => {
 nextBtn.onclick = () => {
   nextQuestion();
 };
+
+
+function startQuiz() {
+  showQuestions(questionCount);
+  questionCounter(questionNumber);
+  startTimer(timeValue);
+  startTimerLine(widthValue);
+}
+
+// Reset Quiz
+function resetQuiz() {
+  timeValue = 20;
+  questionCount = 0;
+  questionNumber = 1;
+  userScore = 0;
+  widthValue = 0;
+}
+
+// Move to the next question
+function nextQuestion() {
+  if (questionCount < questions.length - 1) {
+    questionCount++;
+    questionNumber++;
+    updateQuiz();
+  } else {
+    clearInterval(counter);
+    clearInterval(counterLine);
+    showResult();
+  }
+}
+
+
+
