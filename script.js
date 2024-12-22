@@ -64,7 +64,7 @@ const timeCount = document.querySelector(".timer-second");
 const restartQuizBtn = resultBox.querySelector(".restart");
 const quitQuizBtn = resultBox.querySelector(".quit");
 const nextBtn = document.querySelector(".next-btn");
-const bottomQuestionCounter = document.querySelector(".total-question");
+const totalQuestion = document.querySelector(".total-question");
 
 let timeValue = 20;
 let questionCount = 0;
@@ -170,10 +170,10 @@ function optionSelected(answer) {
   if (userAnswer === correctAnswer) {
     userScore++;
     answer.classList.add("correct");
-    answer.insertAdjacentHTML("beforeend", trueIconTag);
+    answer.insertAdjacentHTML("beforeend", trueIcon);
   } else {
     answer.classList.add("incorrect");
-    answer.insertAdjacentHTML("beforeend", falseIconTag);
+    answer.insertAdjacentHTML("beforeend", falseIcon);
     markCorrectAnswer(correctAnswer);
   }
 
@@ -185,7 +185,7 @@ function markCorrectAnswer(correctAnswer) {
   for (let i = 0; i < optionList.children.length; i++) {
     if (optionList.children[i].textContent === correctAnswer) {
       optionList.children[i].classList.add("correct");
-      optionList.children[i].insertAdjacentHTML("beforeend", trueIconTag);
+      optionList.children[i].insertAdjacentHTML("beforeend", trueIcon);
     }
   }
 }
@@ -214,7 +214,7 @@ function showResult() {
       ? `<span>and congrats! 🎉, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
       : userScore > 1
       ? `<span>nice 👏, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
-      : `<span>sorry 🥲, You got only <p>${userScore}</p> out of <p>${questions.length}</p></span>`;
+      : `<span>sorry 🥲, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`;
   
   scoreText.innerHTML = scoreTag;
 
@@ -264,10 +264,10 @@ function startTimerLine(time) {
 }
 
 function questionCounter(index) {
-  let totalQuestionCountTag = `<div class='numberOfQuestion'><h3><p> ${index}  </p>     of    <p> ${questions.length} </p></h3></div>`;
-  bottomQuestionCounter.innerHTML = totalQuestionCountTag;
+  let totalQuestionText = `<div class='numberOfQuestion'><h3><p> ${index}  </p>     of    <p> ${questions.length} </p></h3></div>`;
+  totalQuestion.innerHTML = totalQuestionText;
 }
 
-const trueIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
-const falseIconTag =
+const trueIcon = '<div class="icon tick"><i class="fas fa-check"></i></div>';
+const falseIcon =
   '<div class="icon cross"><i class="fas fa-times"></i></div>';
