@@ -13,6 +13,39 @@ body {
   background-color: dodgerblue;
 }
 
+
+.rank {
+  display: flex;
+  justify-content: start;
+  width: 400px;
+  height: 70px;
+  padding: 30px;
+  border: 2px solid white;
+  box-shadow: 2px 2px 3px black;
+  border-radius: 6px;
+  margin: 5px 10px;
+  display: block;
+  padding: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom:2px solid white ;
+}
+
+#highScore {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+
+.right-section{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .settings-section {
   display: flex;
   justify-content: end;
