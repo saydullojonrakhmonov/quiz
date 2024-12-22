@@ -4,6 +4,9 @@ const applyBtn = document.querySelector(".apply-btn");
 const quizType = document.getElementById("quiz-types");
 const quizAmount = document.getElementById("quiz-amount");
 const quizCategory = document.getElementById("quiz-category");
+const startBtn = document.getElementById("startBtn");
+
+
 
 let changeLevels;
 let questions = []
@@ -45,9 +48,10 @@ applyBtn.addEventListener("click", () => {
         console.error("Error fetching quiz data:", error);
       });
   }, 100);
+  startBtn.classList.toggle('display-start')
+
 });
 
-const startBtn = document.querySelector(".start-btn");
 const infoBox = document.querySelector(".info-box");
 const exitBtn = infoBox.querySelector(".quit");
 const continueBtn = infoBox.querySelector(".restart");
@@ -192,37 +196,43 @@ function disableOptions() {
   }
 }
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  displayHighScore();
+});
+
+
+
 function showResult() {
-    infoBox.classList.remove("activeInfo");
-    quizBox.classList.remove("activeQuiz");
-    resultBox.classList.add("activeResult");
-    const scoreText = resultBox.querySelector(".score-text");
-    
-    let scoreTag =
-      userScore > 3
-        ? `<span>and congrats! 🎉, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
-        : userScore > 1
-        ? `<span>nice 👏, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
-        : `<span>sorry 🥲, You got only <p>${userScore}</p> out of <p>${questions.length}</p></span>`;
-    
-    scoreText.innerHTML = scoreTag;
+  infoBox.classList.remove("activeInfo");
+  quizBox.classList.remove("activeQuiz");
+  resultBox.classList.add("activeResult");
+  const scoreText = resultBox.querySelector(".score-text");
   
-    // Check if the current score is higher than the saved high score
-    const savedScore = localStorage.getItem("quizScore");
-    if (!savedScore || userScore > parseInt(savedScore)) {
-      // If no saved score or current score is higher, update the high score
-      localStorage.setItem("quizScore", userScore);
-      displayHighScore();
-    }
-  }
+  let scoreTag =
+    userScore > 3
+      ? `<span>and congrats! 🎉, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
+      : userScore > 1
+      ? `<span>nice 👏, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
+      : `<span>sorry 🥲, You got only <p>${userScore}</p> out of <p>${questions.length}</p></span>`;
   
-  function displayHighScore() {
-    const savedScore = localStorage.getItem("quizScore");
-    if (savedScore) {
-      const highScore = document.querySelector("#highScore");
-      highScore.textContent = `Your high score: ${savedScore}`;
-    }
+  scoreText.innerHTML = scoreTag;
+
+
+  const savedScore = localStorage.getItem("quizScore");
+  if (!savedScore || userScore > parseInt(savedScore)) {
+    localStorage.setItem("quizScore", userScore);
+    displayHighScore();
   }
+}
+
+function displayHighScore() {
+  const savedScore = localStorage.getItem("quizScore");
+  if (savedScore) {
+    const highScore = document.querySelector("#highScore");
+    highScore.textContent = `Your high score: ${savedScore}`;
+  }
+}
   
 
 function startTimer(time) {
