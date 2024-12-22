@@ -137,4 +137,30 @@ function nextQuestion() {
 }
 
 
+function updateQuiz() {
+  showQuestions(questionCount);
+  questionCounter(questionNumber);
+  clearInterval(counter);
+  clearInterval(counterLine);
+  startTimer(timeValue);
+  startTimerLine(widthValue);
+  timeText.innerHTML = "Time Left";
+  nextBtn.classList.remove("show");
+}
+
+// Display Questions
+function showQuestions(index) {
+  const queText = document.querySelector(".question-text");
+  let questionTag = `<span> ${questions[index].number}.  ${questions[index].question} </span>`;
+  let optionTag = questions[index].options
+    .map((option) => `<div class="option"><span>${option}</span></div>`)
+    .join("");
+  queText.innerHTML = questionTag;
+  optionList.innerHTML = optionTag;
+
+  optionList.querySelectorAll(".option").forEach((option) => {
+    option.onclick = () => optionSelected(option);
+  });
+}
+
 
