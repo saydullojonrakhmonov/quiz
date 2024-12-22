@@ -18,8 +18,8 @@ const secondTimer = document.getElementById("timer-second");
 const timeLine = document.getElementById("time-line");
 const optionsList = document.getElementById("options-list");
 const resultBox = document.getElementById("result-box");
-const totalQuestion = document.getElementById('total-questions')
-const nextBtn = document.getElementById('next-btn')
+const totalQuestion = document.getElementById("total-questions");
+const nextBtn = document.getElementById("next-btn");
 const restartBtn = document.getElementById("restart-btn");
 const quitBtn = document.getElementById("quit-btn");
 
@@ -49,7 +49,16 @@ applyBtn.addEventListener("click", () => {
         `https://opentdb.com/api.php?amount=${selectedAmount}&category=${selectCategory}&difficulty=${selectedDifficulty}&type=multiple`
       )
       .then((res) => {
-        questions = res.data.results.map((question, index) => {});
-      });
-  });
+        questions = res.data.results.map((question, index) => ({
+          number: index + 1,
+          question: question.question,
+          options: [...question.incorrect_answer, question.correct_answer].sort(
+            () => Math.random() - 0.5
+          ),
+          answer: question.correct_answer,
+        }));
+        modal.classList.toggle("hide");
+      })
+      .catch((err) => console.log(`Error ${err}`));
+  }, 100);
 });
