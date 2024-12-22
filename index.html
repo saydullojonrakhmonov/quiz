@@ -77,10 +77,10 @@
         <button class="apply-btn btn">Apply</button>
       </div>
     </div>
-    <div class="start-btn"><button>Start Quiz</button></div>
+    <div class="start-btn" id="start-btn"><button>Start Quiz</button></div>
 
-    <div class="info-box">
-      <div class="info-title"><span>Some Rules of this Quiz</span></div>
+    <div class="questions-box">
+      <div class="question-title"><span>Attention!!!</span></div>
       <div class="info-list">
         <div class="info">
           1. You will have only <span>20 seconds</span> per each question.
@@ -99,40 +99,40 @@
         </div>
       </div>
       <div class="buttons">
-        <button class="quit">Exit</button>
-        <button class="restart">Start</button>
+        <button id="exit">Exit</button>
+        <button id="start">Start</button>
       </div>
     </div>
 
-    <div class="quiz-box">
+    <div class="quiz-box" id="quiz-box">
       <header>
         <div class="title">Quiz </div>
         <div class="timer">
-          <div class="time-left-text">Time Left</div>
-          <div class="timer-second"></div>
+          <div class="time-left-text" id="time-left-text">Time Left</div>
+          <div class="timer-second" id="timer-second"></div>
         </div>
-        <div class="time-line"></div>
+        <div class="time-line" id="time-line"></div>
       </header>
       <section>
         <div class="question-text"></div>
-        <div class="option-list"></div>
+        <div class="option-list" id="options-list"></div>
       </section>
 
       <footer>
-        <div class="total-question"></div>
-        <button class="next-btn">Next</button>
+        <div class="total-question" id="total-questions"> </div>
+        <button class="next-btn" id="next-btn">Next</button>
       </footer>
     </div>
 
-    <div class="result-box">
+    <div class="result-box" id="result-box">
       <div class="icon">
         <i class="fas fa-crown"></i>
       </div>
       <div class="complete-text">You've completed the Quiz!</div>
       <div class="score-text"></div>
       <div class="buttons">
-        <button class="restart">Replay</button>
-        <button class="quit">Quit</button>
+        <button class="restart" id="restart-btn">Restart</button>
+        <button class="quit" id="quit-btn">Quit</button>
       </div>
     </div>
   </body>
