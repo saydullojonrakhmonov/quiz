@@ -1,4 +1,4 @@
-/* importing google fonts */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
@@ -10,14 +10,18 @@
 
 body {
   overflow-x: hidden;
-  background: #5372f0;
+  background-color: dodgerblue;
 }
 
-.settings {
+.settings-section {
   display: flex;
   justify-content: end;
   margin: 5px;
   padding: 10px;
+}
+
+option{
+    border-radius: 8px;
 }
 
 .settings-btn {
@@ -27,12 +31,13 @@ body {
   border-radius: 7px;
   cursor: pointer;
   padding: 5px 10px;
+  color: #0263ca;
 }
 
 .btn .tooltip {
     display: none;
     position: absolute;
-    top: 40px; /* Adjust to position above the button */
+    top: 40px; 
     left: 50%;
     transform: translateX(-50%);
     background-color: #333;
@@ -48,22 +53,15 @@ body {
     display: block;
 }
 
-.modal {
+.modal-section {
   display: flex;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   width: 400px;
-  background: radial-gradient(
-    circle,
-    #5284b8,
-    #0094bb,
-    #009f9c,
-    #00a361,
-    #739f10
-  );
-  z-index: 4;
+  background-color: rgb(166, 166, 166);
+  z-index: 999;
   color: white;
   font-size: 22px;
   border: 1px solid black;
@@ -116,7 +114,16 @@ cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.info-box.active-info,
+.start-btn{
+    z-index: -999;
+}
+
+.numberOfQuestion{
+    display: flex;
+    gap: 10px;
+}
+
+.info-box.activeInfo,
 .quiz-box.activeQuiz,
 .result-box.activeResult {
   opacity: 1;
@@ -355,7 +362,7 @@ footer {
   border-top: 1px solid lightgrey;
 }
 
-footer .total-question span {
+footer .total-question h3{
   display: flex;
   user-select: none;
 }
@@ -475,7 +482,7 @@ footer button.show {
   background: #5372f0;
 }
 
-/* responsive section  */
+
 @media (max-width: 768px) {
   section {
     padding: 25px 15px 20px 15px;
