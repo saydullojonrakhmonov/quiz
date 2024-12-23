@@ -22,8 +22,8 @@ applyBtn.addEventListener("click", () => {
     const selectedAmount = quizAmount.value;
     const selectCategory = quizCategory.value;
 
-    if (!selectedDifficulty || !selectedAmount) {
-      alert("Please select difficulty and question amount!");
+    if (!selectedDifficulty || !selectedAmount || !selectCategory) {
+      alert("Please select difficulty, category and question amount!");
       return;
     }
 
