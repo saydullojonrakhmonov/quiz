@@ -230,7 +230,7 @@ function displayHighScore() {
   const savedScore = localStorage.getItem("quizScore");
   if (savedScore) {
     const highScore = document.querySelector("#highScore");
-    highScore.textContent = `Your high score: ${savedScore}`;
+    highScore.innerHTML = `Your high score: ${savedScore}`;
   }
 }
   
