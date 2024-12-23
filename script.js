@@ -41,11 +41,11 @@ applyBtn.addEventListener("click", () => {
           ].sort(() => Math.random() - 0.5),
           answer: question.correct_answer,
         }));
-        console.log("Quiz Data:", questions);
+        // console.log("Quiz Data:", questions);
         modal.classList.toggle("hide");
       })
       .catch((error) => {
-        console.error("Error fetching quiz data:", error);
+        console.error("Something went wrong");
       });
   }, 100);
   startBtn.classList.toggle('display-start')
@@ -67,7 +67,7 @@ const nextBtn = document.querySelector(".next-btn");
 const totalQuestion = document.querySelector(".total-question");
 
 let timeValue = 20;
-let questionCount = 0;
+let questionIndex = 0;
 let questionNumber = 1;
 let userScore = 0;
 let counter;
@@ -110,7 +110,7 @@ nextBtn.onclick = () => {
 };
 
 function startQuiz() {
-  showQuestions(questionCount);
+  showQuestions(questionIndex);
   questionCounter(questionNumber);
   startTimer(timeValue);
   startTimerLine(widthValue);
@@ -118,15 +118,15 @@ function startQuiz() {
 
 function resetQuiz() {
   timeValue = 20;
-  questionCount = 0;
+  questionIndex = 0;
   questionNumber = 1;
   userScore = 0;
   widthValue = 0;
 }
 
 function nextQuestion() {
-  if (questionCount < questions.length - 1) {
-    questionCount++;
+  if (questionIndex < questions.length - 1) {
+    questionIndex++;
     questionNumber++;
     updateQuiz();
   } else {
@@ -137,7 +137,7 @@ function nextQuestion() {
 }
 
 function updateQuiz() {
-  showQuestions(questionCount);
+  showQuestions(questionIndex);
   questionCounter(questionNumber);
   clearInterval(counter);
   clearInterval(counterLine);
@@ -148,12 +148,12 @@ function updateQuiz() {
 }
 
 function showQuestions(index) {
-  const queText = document.querySelector(".question-text");
+  const questionText = document.querySelector(".question-text");
   let questionTag = `<span> ${questions[index].number}.  ${questions[index].question} </span>`;
   let optionTag = questions[index].options
     .map((option) => `<div class="option"><span>${option}</span></div>`)
     .join("");
-  queText.innerHTML = questionTag;
+  questionText.innerHTML = questionTag;
   optionList.innerHTML = optionTag;
 
   optionList.querySelectorAll(".option").forEach((option) => {
@@ -165,7 +165,7 @@ function optionSelected(answer) {
   clearInterval(counter);
   clearInterval(counterLine);
   let userAnswer = answer.textContent;
-  let correctAnswer = questions[questionCount].answer;
+  let correctAnswer = questions[questionIndex].answer;
 
   if (userAnswer === correctAnswer) {
     userScore++;
@@ -242,7 +242,7 @@ function startTimer(time) {
     if (time < 0) {
       clearInterval(counter);
       timeText.innerHTML = "Time Off";
-      markCorrectAnswer(questions[questionCount].answer);
+      markCorrectAnswer(questions[questionIndex].answer);
       disableOptions();
       nextBtn.classList.add("show");
       setTimeout(() => nextQuestion(), 3000); 
