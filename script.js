@@ -211,7 +211,7 @@ function showResult() {
   
   let scoreTag =
     userScore > 3
-      ? `<span>and congrats! 🎉, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
+      ? `<span> congrats! 🎉, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
       : userScore > 1
       ? `<span>nice 👏, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
       : `<span>sorry 🥲, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`;
