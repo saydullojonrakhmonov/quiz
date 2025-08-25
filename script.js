@@ -1,4 +1,3 @@
-// ====== Elements ======
 const settingsBtn = document.querySelector(".settings-btn");
 const modal = document.getElementById("modal");
 const applyBtn = document.querySelector(".apply-btn");
@@ -7,16 +6,15 @@ const quizAmount = document.getElementById("quiz-amount");
 const quizCategory = document.getElementById("quiz-category");
 const startBtn = document.getElementById("startBtn");
 
-let changeLevels;
-let questions = [];
 
-settingsBtn.addEventListener("click", (e) => {
-  addRipple(e);
+
+let changeLevels;
+let questions = []
+settingsBtn.addEventListener("click", () => {
   modal.classList.toggle("hide");
 });
 
-applyBtn.addEventListener("click", (e) => {
-  addRipple(e);
+applyBtn.addEventListener("click", () => {
   clearTimeout(changeLevels);
 
   changeLevels = setTimeout(() => {
@@ -37,22 +35,23 @@ applyBtn.addEventListener("click", (e) => {
         questions = response.data.results.map((question, index) => ({
           number: index + 1,
           question: question.question,
-          options: [...question.incorrect_answers, question.correct_answer].sort(
-            () => Math.random() - 0.5
-          ),
+          options: [
+            ...question.incorrect_answers,
+            question.correct_answer,
+          ].sort(() => Math.random() - 0.5),
           answer: question.correct_answer,
         }));
+        // console.log("Quiz Data:", questions);
         modal.classList.toggle("hide");
-        // Show start button container if you were hiding it elsewhere
-        startBtn.classList.toggle("display-start");
       })
-      .catch(() => {
+      .catch((error) => {
         console.error("Something went wrong");
       });
   }, 100);
+  startBtn.classList.toggle('display-start')
+
 });
 
-// ====== Quiz Elements ======
 const infoBox = document.querySelector(".info-box");
 const exitBtn = infoBox.querySelector(".quit");
 const continueBtn = infoBox.querySelector(".restart");
@@ -75,7 +74,6 @@ let counter;
 let counterLine;
 let widthValue = 0;
 
-// ====== Start / Flow ======
 startBtn.onclick = () => {
   if (questions.length === 0) {
     alert(
@@ -84,42 +82,33 @@ startBtn.onclick = () => {
     return;
   }
   infoBox.classList.add("activeInfo");
-  animateIn(infoBox);
 };
 
-exitBtn.onclick = (e) => {
-  addRipple(e);
+exitBtn.onclick = () => {
   infoBox.classList.remove("activeInfo");
 };
 
-continueBtn.onclick = (e) => {
-  addRipple(e);
+continueBtn.onclick = () => {
   infoBox.classList.remove("activeInfo");
   quizBox.classList.add("activeQuiz");
-  animateIn(quizBox);
   startQuiz();
 };
 
-restartQuizBtn.onclick = (e) => {
-  addRipple(e);
+restartQuizBtn.onclick = () => {
   resultBox.classList.remove("activeResult");
   quizBox.classList.add("activeQuiz");
-  animateIn(quizBox);
   resetQuiz();
   startQuiz();
 };
 
-quitQuizBtn.onclick = (e) => {
-  addRipple(e);
+quitQuizBtn.onclick = () => {
   window.location.reload();
 };
 
-nextBtn.onclick = (e) => {
-  addRipple(e);
+nextBtn.onclick = () => {
   nextQuestion();
 };
 
-// ====== Core ======
 function startQuiz() {
   showQuestions(questionIndex);
   questionCounter(questionNumber);
@@ -133,7 +122,6 @@ function resetQuiz() {
   questionNumber = 1;
   userScore = 0;
   widthValue = 0;
-  timeLine.style.width = "0%";
 }
 
 function nextQuestion() {
@@ -161,20 +149,12 @@ function updateQuiz() {
 
 function showQuestions(index) {
   const questionText = document.querySelector(".question-text");
-  const questionTag = `<span>${questions[index].number}. ${questions[index].question}</span>`;
-  const optionTag = questions[index].options
+  let questionTag = `<span> ${questions[index].number}.  ${questions[index].question} </span>`;
+  let optionTag = questions[index].options
     .map((option) => `<div class="option"><span>${option}</span></div>`)
     .join("");
-
   questionText.innerHTML = questionTag;
   optionList.innerHTML = optionTag;
-
-  // animate entry
-  questionText.classList.remove("q-enter");
-  optionList.classList.remove("q-enter");
-  void questionText.offsetWidth; // reflow to restart animation
-  questionText.classList.add("q-enter");
-  optionList.classList.add("q-enter");
 
   optionList.querySelectorAll(".option").forEach((option) => {
     option.onclick = () => optionSelected(option);
@@ -184,8 +164,8 @@ function showQuestions(index) {
 function optionSelected(answer) {
   clearInterval(counter);
   clearInterval(counterLine);
-  const userAnswer = answer.textContent;
-  const correctAnswer = questions[questionIndex].answer;
+  let userAnswer = answer.textContent;
+  let correctAnswer = questions[questionIndex].answer;
 
   if (userAnswer === correctAnswer) {
     userScore++;
@@ -216,27 +196,28 @@ function disableOptions() {
   }
 }
 
-// ====== High Score ======
+
 document.addEventListener("DOMContentLoaded", () => {
   displayHighScore();
 });
 
-function showResult() {
-  const scoreText = resultBox.querySelector(".score-text");
 
+
+function showResult() {
   infoBox.classList.remove("activeInfo");
   quizBox.classList.remove("activeQuiz");
   resultBox.classList.add("activeResult");
-  animateIn(resultBox);
-
-  const msg =
+  const scoreText = resultBox.querySelector(".score-text");
+  
+  let scoreTag =
     userScore > 3
-      ? "congrats! 🎉"
+      ? `<span> congrats! 🎉, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
       : userScore > 1
-      ? "nice 👏"
-      : "sorry 🥲";
+      ? `<span>nice 👏, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
+      : `<span>sorry 🥲, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`;
+  
+  scoreText.innerHTML = scoreTag;
 
-  scoreText.innerHTML = `<span>${msg}, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`;
 
   const savedScore = localStorage.getItem("quizScore");
   if (!savedScore || userScore > parseInt(savedScore)) {
@@ -252,10 +233,9 @@ function displayHighScore() {
     highScore.innerHTML = `Your high score: ${savedScore}`;
   }
 }
+  
 
-// ====== Timers ======
 function startTimer(time) {
-  clearInterval(counter);
   counter = setInterval(() => {
     timeCount.textContent = time > 9 ? time : `0${time}`;
     time--;
@@ -265,17 +245,16 @@ function startTimer(time) {
       markCorrectAnswer(questions[questionIndex].answer);
       disableOptions();
       nextBtn.classList.add("show");
-      setTimeout(() => nextQuestion(), 1200);
+      setTimeout(() => nextQuestion(), 3000); 
     }
   }, 1000);
 }
 
 function startTimerLine(time) {
-  clearInterval(counterLine);
   const totalTime = 720;
   counterLine = setInterval(() => {
     time += 1;
-    const progressPercentage = (time / totalTime) * 100;
+    let progressPercentage = (time / totalTime) * 100;
     timeLine.style.width = `${progressPercentage}%`;
     if (time >= totalTime) {
       clearInterval(counterLine);
@@ -284,41 +263,11 @@ function startTimerLine(time) {
   }, 30);
 }
 
-// ====== Footer counter ======
 function questionCounter(index) {
-  const totalQuestionText = `<div class='numberOfQuestion'><h3><p>${index}</p> of <p>${questions.length}</p></h3></div>`;
+  let totalQuestionText = `<div class='numberOfQuestion'><h3><p> ${index}  </p>     of    <p> ${questions.length} </p></h3></div>`;
   totalQuestion.innerHTML = totalQuestionText;
 }
 
-// ====== Icons ======
 const trueIcon = '<div class="icon tick"><i class="fas fa-check"></i></div>';
-const falseIcon = '<div class="icon cross"><i class="fas fa-times"></i></div>';
-
-// ====== Micro-animations helpers ======
-function animateIn(el){
-  el.style.willChange = "transform, opacity";
-  el.classList.add("q-enter");
-  setTimeout(()=> (el.style.willChange = "auto"), 400);
-}
-
-// click ripple for any button-like element
-function addRipple(e){
-  const target = e.currentTarget;
-  const rect = target.getBoundingClientRect();
-  const span = document.createElement("span");
-  span.className = "ripple";
-  const size = Math.max(rect.width, rect.height);
-  const x = e.clientX - rect.left - size/2;
-  const y = e.clientY - rect.top - size/2;
-  span.style.width = span.style.height = `${size}px`;
-  span.style.left = `${x}px`;
-  span.style.top = `${y}px`;
-  target.appendChild(span);
-  setTimeout(()=> span.remove(), 650);
-}
-
-// Enable ripple on common buttons created later as well
-document.addEventListener("click", (e)=>{
-  const btnLike = e.target.closest(".btn, .apply-btn, .next-btn, .buttons button, .settings-btn, .info-box .buttons button");
-  if(btnLike){ addRipple(e); }
-}, {capture:true});
+const falseIcon =
+  '<div class="icon cross"><i class="fas fa-times"></i></div>';
